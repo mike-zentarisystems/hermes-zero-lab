@@ -1,0 +1,16 @@
+model:
+  provider: custom
+  default: auto/coding
+  base_url: http://omniroute:20128/v1
+  api_key: "${OPENAI_API_KEY}"
+  context_length: 64000
+
+tool_loop_guardrails:
+  hard_stop_enabled: true
+  hard_stop_after:
+    exact_failure: 5
+    idempotent_no_progress: 5
+
+checkpoints:
+  enabled: true
+  max_snapshots: 10

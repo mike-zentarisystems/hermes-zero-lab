@@ -1,0 +1,45 @@
+{
+  "name": "Hermes Zero Lab",
+  "dockerComposeFile": "../compose.yaml",
+  "service": "workspace",
+  "runServices": [
+    "workspace",
+    "omniroute",
+    "hermes"
+  ],
+  "workspaceFolder": "/workspaces/hermes-zero-lab",
+  "shutdownAction": "stopCompose",
+  "initializeCommand": "bash .devcontainer/initialize.sh",
+  "postCreateCommand": "bash scripts/post-create.sh",
+  "postStartCommand": "bash scripts/post-start.sh",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
+  },
+  "forwardPorts": [
+    9119,
+    20128
+  ],
+  "portsAttributes": {
+    "9119": {
+      "label": "Hermes Dashboard",
+      "onAutoForward": "notify",
+      "visibility": "private"
+    },
+    "20128": {
+      "label": "OmniRoute Dashboard",
+      "onAutoForward": "notify",
+      "visibility": "private"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-azuretools.vscode-docker",
+        "redhat.vscode-yaml",
+        "DavidAnson.vscode-markdownlint",
+        "timonwong.shellcheck"
+      ]
+    }
+  },
+  "remoteUser": "vscode"
+}

@@ -1,0 +1,13 @@
+schema_version: 1
+last_reviewed: 2026-07-24
+models:
+  - route: auto/coding
+    provider: omniroute-auto
+    exact_model: dynamic
+    chat: untested
+    single_tool: untested
+    multi_tool: untested
+    error_recovery: untested
+    verification_level: Documentation Verified
+    tested_at: null
+    notes: Record the actual provider and model selected by OmniRoute.

@@ -1,0 +1,12 @@
+schema_version: 1
+last_reviewed: 2026-07-24
+providers:
+  - id: community-result-needed
+    name: Community result needed
+    access_type: unknown
+    cost_status: untested
+    payment_method_required: unknown
+    omniroute_status: untested
+    verification_level: Documentation Verified
+    tested_at: null
+    notes: Verify current official provider terms before submitting evidence.

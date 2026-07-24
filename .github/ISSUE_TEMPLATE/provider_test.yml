@@ -1,0 +1,30 @@
+name: Provider or model test
+description: Submit sanitized compatibility evidence
+title: "[Provider Test]: "
+labels: [provider-test]
+body:
+  - type: input
+    id: date
+    attributes: {label: Test date, placeholder: YYYY-MM-DD}
+    validations: {required: true}
+  - type: input
+    id: provider
+    attributes: {label: Provider}
+    validations: {required: true}
+  - type: input
+    id: model
+    attributes: {label: Exact model or route}
+    validations: {required: true}
+  - type: textarea
+    id: results
+    attributes:
+      label: Results
+      description: Chat, JSON, tools, recovery, access method, and limitations
+    validations: {required: true}
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Safety
+      options:
+        - label: I removed credentials and account identifiers.
+          required: true
