@@ -2,7 +2,7 @@
 
 # Hermes Zero Lab
 
-**Learn, launch, and extend Hermes Agent at zero initial cost.**
+**A self-hosted AI agent workspace. Zero model credits to start.**
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/mike-zentarisystems/hermes-zero-lab?quickstart=1)
 [![Validate](https://github.com/mike-zentarisystems/hermes-zero-lab/actions/workflows/validate.yml/badge.svg)](https://github.com/mike-zentarisystems/hermes-zero-lab/actions/workflows/validate.yml)
@@ -10,22 +10,20 @@
 
 </div>
 
-Hermes Zero Lab is an independent community learning environment for [Hermes Agent](https://github.com/NousResearch/hermes-agent) and [OmniRoute](https://github.com/diegosouzapw/OmniRoute).
+Hermes Zero Lab is a reproducible, self-hosted workspace for running [Hermes Agent](https://github.com/NousResearch/hermes-agent) with [OmniRoute](https://github.com/diegosouzapw/OmniRoute) as its OpenAI-compatible inference gateway.
 
-It helps a new learner launch a working lab without buying model credits, then understand what each layer does, where it fails, and how to extend it safely.
+It gives you a working AI agent environment, persistent state, and a guided path from first launch to confident operation, without requiring paid model credits to get started.
 
-> This is a free-to-start classroom, not a promise of unlimited free production hosting.
+> This is a self-hosted workspace, not a promise of unlimited free production hosting. See [What "free" means](#what-free-means) and [LIMITATIONS.md](LIMITATIONS.md).
 
-## What you get
+## What it is
 
-- Hermes Agent gateway and built-in Web Dashboard
-- OmniRoute as the OpenAI-compatible inference gateway
-- Persistent Hermes and OmniRoute state inside the workspace
-- A guided curriculum using the Zentari Learning Style
-- Health, model, reset, export, and repository validation commands
-- Optional paths for providers, skills, MCP, Telegram, Tailscale, local Docker, and cloud experiments
+A two-service stack you own and control:
 
-## Architecture
+- **Hermes Agent** - the agent runtime: sessions, memory, skills, cron, file tools, and a web dashboard
+- **OmniRoute** - the inference gateway: provider connections, routing, cooldowns, fallback, and usage tracking
+
+No separate database, no custom frontend, no Kubernetes. State lives in your workspace and exports cleanly when you outgrow the lab.
 
 ```text
 Browser
@@ -43,12 +41,31 @@ OmniRoute
   |-- Provider connections
   |-- Routing, cooldowns, fallback, usage
   v
-Free upstream model provider selected by the learner
+Model provider selected by the operator
 ```
 
-The core has two application services. No separate database, custom frontend, Kubernetes cluster, or fifteen-service architecture wearing a trench coat.
+## Current capabilities
 
-## Start in GitHub Codespaces
+These are shipped and working in the repository today:
+
+| Capability | Status |
+|---|---|
+| One-command launch in GitHub Codespaces | Shipped |
+| Hermes Agent gateway with web dashboard | Shipped |
+| OmniRoute inference gateway with dashboard | Shipped |
+| Persistent Hermes and OmniRoute state | Shipped |
+| Generated dashboard credentials | Shipped |
+| Health, model, reset, export, validation commands | Shipped |
+| 8-lesson guided curriculum (Zentari Learning Style) | Shipped |
+| Extension framework with optional recipes | Shipped |
+| Limitations and security guidance | Shipped |
+| Community contribution templates | Shipped |
+
+See [STATUS.md](STATUS.md) for the full evidence-backed status.
+
+## Quickstart
+
+### GitHub Codespaces
 
 1. Click **Open in GitHub Codespaces** above.
 2. Choose the smallest available machine.
@@ -76,7 +93,7 @@ make model-test
 7. Open Hermes with the credentials shown by `make access`.
 8. Begin [Lesson 00](lessons/00-what-you-are-building.md).
 
-## What “free” means
+## What "free" means
 
 The core path is designed for zero direct cost, but it is limited:
 
@@ -87,7 +104,7 @@ The core path is designed for zero direct cost, but it is limited:
 - Model chat quality does not guarantee Hermes tool-call quality.
 - Codespaces, Hermes, OmniRoute, and upstream providers are separate services with separate terms.
 
-Read [LIMITATIONS.md](LIMITATIONS.md) before relying on the lab.
+Read [LIMITATIONS.md](LIMITATIONS.md) before relying on the workspace.
 
 ## Commands
 
@@ -104,9 +121,9 @@ make reset       # destructive reset with confirmation
 make validate    # run repository checks
 ```
 
-## Learning path
+## Learn the system
 
-The complete plan is in [LEARNING_LAB.md](LEARNING_LAB.md).
+The [8-lesson curriculum](LEARNING_LAB.md) takes you from first launch through tools, state management, skills, and a capstone project:
 
 1. [What You Are Building](lessons/00-what-you-are-building.md)
 2. [Launch and Inspect](lessons/01-launch-and-inspect.md)
@@ -119,21 +136,37 @@ The complete plan is in [LEARNING_LAB.md](LEARNING_LAB.md).
 
 ## Extend it
 
-See [EXTENDING.md](EXTENDING.md) for the extension contract and optional recipes.
+The core stays lean. Everything beyond Hermes plus OmniRoute is an optional recipe. See [EXTENDING.md](EXTENDING.md) for the extension contract.
+
+Optional paths include providers, skills, MCP servers, Telegram, Tailscale private access, local Docker, and cloud deployment experiments.
+
+## What's next
+
+The [roadmap](ROADMAP.md) tracks planned work in priority order:
+
+- **Provider qualification** - replace anecdotal recommendations with reproducible test evidence
+- **Portability** - move the same state between Codespaces, local Docker, and a VM
+- **Safer execution** - teach execution boundaries before adding autonomy
+- **Skills and messaging** - skill authoring, MCP qualification, Telegram/Slack recipes
+- **Instructor edition** - workshop plans, answer keys, troubleshooting guides
+
+## Out of scope
+
+Hermes Zero Lab intentionally does not:
+
+- Provide free unlimited model inference (providers set their own terms)
+- Replace the official Hermes Agent or OmniRoute documentation
+- Offer managed hosting or uptime guarantees
+- Include a custom frontend beyond the built-in dashboards
+- Bundle a database beyond what Hermes and OmniRoute manage internally
 
 ## Project status
 
-Current milestone: **v0.1 - First Flight**
+See [STATUS.md](STATUS.md) for the current release status, verification evidence, and what's planned next.
 
-The v0.1 target is:
+## Contributing
 
-> A new learner can go from the repository landing page to a successful Hermes conversation and basic tool exercise without spending money or rediscovering the stack from scratch.
-
-See [ROADMAP.md](ROADMAP.md).
-
-## Community
-
-Contributions are welcome, especially reproducible provider tests, model tool-call tests, beginner documentation improvements, failure recovery notes, deployment validation, translations, and accessibility improvements.
+Contributions are welcome, especially reproducible provider tests, model tool-call tests, documentation improvements, failure recovery notes, deployment validation, translations, and accessibility improvements.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md).
 
